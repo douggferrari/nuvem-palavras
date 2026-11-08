@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block titulo %}Resposta enviada · Nuvem de palavras{% endblock %}
+{% block classe %}tela-resposta{% endblock %}
+{% block corpo %}
+<main class="cartao centro">
+  <div class="check" aria-hidden="true">✓</div>
+  <h1>{% if ja_respondeu %}Você já respondeu{% else %}Resposta enviada!{% endif %}</h1>
+  {% if resposta %}<p class="sua-resposta">{{ resposta }}</p>{% endif %}
+  <p class="dica">
+    {% if ja_respondeu %}Cada pessoa responde uma vez.{% else %}Ela já está aparecendo na nuvem.{% endif %}
+  </p>
+  <a class="botao" href="/">Ver a nuvem</a>
+</main>
+{% endblock %}

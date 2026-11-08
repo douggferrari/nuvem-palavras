@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+
+# Banco local (no Railway fica no volume /data)
+data/
+
+.vscode/
+.idea/
+Thumbs.db

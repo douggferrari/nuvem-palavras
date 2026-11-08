@@ -1,0 +1,315 @@
+:root {
+  --fundo: #f5f6fa;
+  --superficie: #ffffff;
+  --texto: #161a2e;
+  --suave: #5c6279;
+  --borda: #dde0ea;
+  --destaque: #3445d4;
+  --destaque-texto: #ffffff;
+  --perigo: #c3243b;
+  /* cores das palavras */
+  --c0: #3445d4;
+  --c1: #c92a6b;
+  --c2: #0b8063;
+  --c3: #7238cf;
+  --c4: #c2540f;
+  --c5: #0b7894;
+  --c6: #946500;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fundo: #0e1122;
+    --superficie: #171b30;
+    --texto: #eef0f8;
+    --suave: #a3a9c2;
+    --borda: #2b3152;
+    --destaque: #8494ff;
+    --destaque-texto: #0e1122;
+    --perigo: #ff7088;
+    --c0: #8494ff;
+    --c1: #ff74a8;
+    --c2: #45d8a8;
+    --c3: #b892ff;
+    --c4: #ffa463;
+    --c5: #55d3f0;
+    --c6: #ffd166;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --fundo: #0e1122;
+  --superficie: #171b30;
+  --texto: #eef0f8;
+  --suave: #a3a9c2;
+  --borda: #2b3152;
+  --destaque: #8494ff;
+  --destaque-texto: #0e1122;
+  --perigo: #ff7088;
+  --c0: #8494ff;
+  --c1: #ff74a8;
+  --c2: #45d8a8;
+  --c3: #b892ff;
+  --c4: #ffa463;
+  --c5: #55d3f0;
+  --c6: #ffd166;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; }
+body {
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Roboto, Arial, sans-serif;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+}
+button, input, textarea { font: inherit; }
+a { color: var(--destaque); }
+
+/* ---------- resposta (celular) ---------- */
+
+.tela-resposta {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+}
+.cartao {
+  width: 100%;
+  max-width: 480px;
+  padding: 28px 22px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.06);
+}
+.cartao h1 { margin: 0 0 20px; font-size: 1.45rem; line-height: 1.25; }
+.rotulo {
+  margin: 0 0 6px;
+  color: var(--suave);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.campo {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--fundo);
+  color: var(--texto);
+  border: 2px solid var(--borda);
+  border-radius: 12px;
+  font-size: 1.2rem;
+}
+.campo:focus { outline: none; border-color: var(--destaque); }
+.dica { margin: 10px 0 18px; color: var(--suave); font-size: 0.9rem; }
+.erro { margin: 10px 0 0; color: var(--perigo); font-weight: 600; }
+.botao {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--destaque);
+  color: var(--destaque-texto);
+  border: 0;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.botao:disabled { opacity: 0.6; cursor: default; }
+.centro { text-align: center; }
+.centro h1 { margin-bottom: 4px; }
+.check {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 14px;
+  background: var(--destaque);
+  color: var(--destaque-texto);
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.sua-resposta {
+  margin: 12px 0 0;
+  color: var(--destaque);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- nuvem (telão) ---------- */
+
+.tela-nuvem {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+.nuvem-topo {
+  padding: clamp(16px, 3vh, 36px) clamp(16px, 4vw, 64px) 0;
+  text-align: center;
+}
+.nuvem-topo h1 {
+  margin: 0;
+  font-size: clamp(1.3rem, 3.2vw, 3.2rem);
+  line-height: 1.15;
+}
+.nuvem {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: clamp(12px, 2vh, 28px) clamp(16px, 3vw, 48px);
+}
+.nuvem-vazia {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: var(--suave);
+  font-size: clamp(1rem, 2vw, 1.6rem);
+}
+.palavra {
+  position: absolute;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+  cursor: default;
+  transition: left 0.9s ease, top 0.9s ease, font-size 0.9s ease;
+}
+.palavra.nova { animation: surgir 0.6s ease-out; }
+@keyframes surgir { from { opacity: 0; transform: scale(0.4); } }
+.c0 { color: var(--c0); }
+.c1 { color: var(--c1); }
+.c2 { color: var(--c2); }
+.c3 { color: var(--c3); }
+.c4 { color: var(--c4); }
+.c5 { color: var(--c5); }
+.c6 { color: var(--c6); }
+
+/* O QR fica sempre preto no branco, em qualquer tema, para a câmera ler. */
+.qr {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 172px;
+  padding: 12px 12px 10px;
+  background: #fff;
+  color: #161a2e;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgb(0 0 0 / 0.18);
+  text-align: center;
+  cursor: zoom-in;
+}
+.qr img { display: block; width: 100%; height: auto; }
+.qr-url { display: block; margin-top: 4px; font-size: 0.78rem; line-height: 1.25; overflow-wrap: anywhere; }
+.qr-total { display: block; color: #5c6279; font-size: 0.75rem; }
+.qr.ampliado { width: min(72vh, 80vw); cursor: zoom-out; }
+.qr.ampliado .qr-url { font-size: 1.5rem; }
+.qr.ampliado .qr-total { font-size: 1rem; }
+@media (max-width: 640px) {
+  .qr { display: none; }   /* no celular a pessoa já está com o link */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .palavra { transition: none; }
+  .palavra.nova { animation: none; }
+}
+
+/* ---------- admin ---------- */
+
+.tela-admin { padding: 24px 16px 48px; }
+.admin { max-width: 760px; margin: 0 auto; }
+.admin-topo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 20px;
+  margin-bottom: 20px;
+}
+.admin-topo h1 { margin: 0; font-size: 1.5rem; }
+.admin-topo nav { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.95rem; }
+.bloco {
+  margin-bottom: 16px;
+  padding: 18px;
+  background: var(--superficie);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+}
+.bloco h2 { margin: 0 0 12px; font-size: 1.1rem; }
+.bloco .dica { margin-bottom: 0; }
+.bloco-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.bloco-topo h2 { margin: 0; }
+.contador {
+  display: inline-block;
+  min-width: 1.8em;
+  margin-left: 6px;
+  padding: 1px 8px;
+  background: var(--fundo);
+  color: var(--suave);
+  border-radius: 99px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.form-pergunta { display: flex; flex-direction: column; gap: 10px; }
+.form-pergunta textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--fundo);
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  resize: vertical;
+}
+.form-pergunta button, .bloco-topo button {
+  align-self: flex-start;
+  padding: 9px 16px;
+  background: var(--destaque);
+  color: var(--destaque-texto);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.bloco-topo button.perigo { background: transparent; color: var(--perigo); border-color: currentColor; }
+button:disabled { opacity: 0.5; cursor: default; }
+code { padding: 1px 5px; background: var(--fundo); border-radius: 5px; font-size: 0.9em; }
+.termos { width: 100%; border-collapse: collapse; }
+.termos th, .termos td { padding: 8px 6px; border-bottom: 1px solid var(--borda); text-align: left; }
+.termos td { overflow-wrap: anywhere; }
+.termos th {
+  color: var(--suave);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.termos .num { width: 4em; text-align: right; font-variant-numeric: tabular-nums; }
+.termos .acao { width: 6em; text-align: right; }
+.link-perigo {
+  padding: 0;
+  background: none;
+  color: var(--perigo);
+  border: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}

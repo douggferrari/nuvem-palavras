@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Nuvem de palavras{% endblock %}</title>
+  <link rel="icon" href="/static/icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/estilo.css?v={{ versao }}">
+</head>
+<body class="{% block classe %}{% endblock %}">
+{% block corpo %}{% endblock %}
+</body>
+</html>

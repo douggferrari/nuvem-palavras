@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block classe %}tela-nuvem{% endblock %}
+{% block corpo %}
+<header class="nuvem-topo">
+  <h1 id="pergunta">{{ pergunta }}</h1>
+</header>
+<main id="nuvem" class="nuvem">
+  <p id="vazio" class="nuvem-vazia" hidden>Aguardando as primeiras respostas…</p>
+</main>
+<aside id="qr" class="qr" title="Clique para ampliar">
+  <img src="/qr.svg" alt="QR code para responder" width="160" height="160">
+  <strong class="qr-url">{{ url_curta }}</strong>
+  <span id="total" class="qr-total"></span>
+</aside>
+<script src="/static/nuvem.js?v={{ versao }}"></script>
+{% endblock %}

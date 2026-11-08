@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block titulo %}Admin · Nuvem de palavras{% endblock %}
+{% block classe %}tela-admin{% endblock %}
+{% block corpo %}
+<main class="admin">
+  <header class="admin-topo">
+    <h1>Nuvem de palavras</h1>
+    <nav>
+      <a href="/" target="_blank">Abrir a nuvem</a>
+      <a href="/r" target="_blank">Página de resposta</a>
+      <a href="/qr.png?baixar=1">Baixar QR code</a>
+    </nav>
+  </header>
+
+  <section class="bloco">
+    <h2>Pergunta</h2>
+    <form method="post" action="/admin/pergunta" class="form-pergunta">
+      <textarea name="texto" rows="2" maxlength="200" required>{{ pergunta }}</textarea>
+      <button type="submit">Salvar pergunta</button>
+    </form>
+    <p class="dica">O QR code leva para <code>{{ url_resposta }}</code>. Trocar a pergunta não
+      apaga as respostas; para começar uma rodada nova, use <strong>Limpar todas</strong>.</p>
+  </section>
+
+  <section class="bloco">
+    <div class="bloco-topo">
+      <h2>Respostas <span class="contador">{{ total }}</span></h2>
+      <form method="post" action="/admin/limpar"
+            onsubmit="return confirm('Apagar todas as respostas? A nuvem fica vazia e todo mundo pode responder de novo.')">
+        <button type="submit" class="perigo" {% if not total %}disabled{% endif %}>Limpar todas</button>
+      </form>
+    </div>
+    {% if termos %}
+    <table class="termos">
+      <thead><tr><th>Termo</th><th class="num">Pessoas</th><th></th></tr></thead>
+      <tbody>
+      {% for t in termos %}
+        <tr>
+          <td>{{ t.texto }}</td>
+          <td class="num">{{ t.n }}</td>
+          <td class="acao">
+            <form method="post" action="/admin/remover"
+                  data-msg="Remover “{{ t.texto }}” da nuvem? Quem escreveu poderá responder de novo."
+                  onsubmit="return confirm(this.dataset.msg)">
+              <input type="hidden" name="chave" value="{{ t.chave }}">
+              <button type="submit" class="link-perigo">Remover</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="dica">Nenhuma resposta ainda.</p>
+    {% endif %}
+  </section>
+</main>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titulo %}Responder · Nuvem de palavras{% endblock %}
+{% block classe %}tela-resposta{% endblock %}
+{% block corpo %}
+<main class="cartao">
+  <p class="rotulo">Sua resposta vai para a nuvem</p>
+  <h1>{{ pergunta }}</h1>
+  <form method="post" action="/r" autocomplete="off"
+        onsubmit="this.querySelector('button').disabled = true">
+    <input class="campo" name="resposta" maxlength="40" required autofocus
+           placeholder="Escreva aqui" aria-label="Sua resposta">
+    {% if erro %}<p class="erro">{{ erro }}</p>{% endif %}
+    <p class="dica">Uma palavra ou expressão curta. Cada pessoa responde uma vez.</p>
+    <button class="botao" type="submit">Enviar</button>
+  </form>
+</main>
+{% endblock %}

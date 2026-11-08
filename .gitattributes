@@ -1,0 +1,13 @@
+# Normaliza quebras de linha no repositório (sempre LF no commit)
+* text=auto eol=lf
+
+# Arquivos que RODAM no Linux (Railway) — precisam obrigatoriamente de LF
+Procfile        text eol=lf
+.python-version text eol=lf
+
+# Arquivos que rodam no Windows — mantêm CRLF
+*.bat           text eol=crlf
+
+# Binários — nunca converter
+*.db            binary
+*.png           binary
